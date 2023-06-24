@@ -24,15 +24,14 @@ public class Account {
     public void checkBalance(){
         System.out.println("Your balance: "+this.balance);
     }
-    public void transfer(){
-        System.out.println("Please enter account number you would like to send money to: ");
-        Scanner scanner = new Scanner(System.in);
-        int targetAccount = scanner.nextInt();
+    public int transfer(int amount, Account targetAccount, Account currentAccount){
 
-        System.out.println("Please enter the amount you would like to send: ");
-        int amount = scanner.nextInt();
+        System.out.println("Confirmation:\nYou would like to send money to: "+targetAccount+"\nThe amount: "+amount+"\n");
 
-        System.out.println("Confirmation:\n You would like to send money to: "+targetAccount+"\nThe amount: "+amount+"\n");
+        targetAccount.balance += amount;
+        currentAccount.balance -= amount;
+
+        return targetAccount.balance;
 
     }
 }

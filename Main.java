@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.Random;
+import java.util.Scanner;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
@@ -21,7 +22,7 @@ public class Main {
         System.out.println(no1.cash_available);
 
         int accountNumGenerate = accountNumGenerate();
-        int balance = 0;
+        int balance = 30;
 
         Account account1 = new Account(accountNumGenerate, balance, "Omer");
         int newAccountNum = accountNumGenerate();
@@ -30,7 +31,19 @@ public class Main {
         System.out.println("Account1 account number: "+account1.accountNumber);
         System.out.println("Account2 account number: "+account2.accountNumber);
 
-        account1.transfer();
+        System.out.println("Please enter account number you would like to send money to: ");
+        Scanner scanner = new Scanner(System.in);
+        int targetAccount = scanner.nextInt();
+
+        System.out.println("Please enter the amount you would like to send: ");
+        int amount = scanner.nextInt();
+
+        account1.transfer(amount, account2, account1);
+
+        System.out.println(account2.balance);
+        System.out.println(account1.balance);
+
+
 
     }
 
